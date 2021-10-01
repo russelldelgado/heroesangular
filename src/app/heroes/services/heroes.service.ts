@@ -35,4 +35,19 @@ export class HeroesService {
 
   }
 
+
+  actualizarHeroe(heroe : Heroe) : Observable<Heroe>{
+    //ahora toca editar un heroe. metodo put que sirve para actualizar mi heroe.
+    return this.httpClient.put<Heroe>( `${this.baseUrl}/heroes/${heroe.id}` , heroe);
+
+  }
+
+
+  eliminarHeroe(heroe : Heroe) : Observable<any>{
+    //Para borrar un eroe le paso su id y no me devuleve nada
+    return this.httpClient.delete<any>( `${this.baseUrl}/heroes/${heroe.id}`);
+
+  }
+
+
 }

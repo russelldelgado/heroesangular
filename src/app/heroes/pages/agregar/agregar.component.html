@@ -1,13 +1,12 @@
-<div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column" >
+<div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column">
 
-{{heroe | json}}
     <div fxFlex="50" fxLayout="column">
 
 
-        <div fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column" >
-            <mat-form-field fxFlex="100"  >
+        <div fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
+            <mat-form-field fxFlex="100">
                 <mat-label>Super heroe</mat-label>
-                <input matInput type="text" required [(ngModel)]="heroe.superhero" >
+                <input matInput type="text" required [(ngModel)]="heroe.superhero">
             </mat-form-field>
 
 
@@ -22,18 +21,18 @@
 
         <mat-form-field>
             <mat-label>Pimera aparicion</mat-label>
-            <input matInput type="text" required [(ngModel)]="heroe.first_appearance" >
+            <input matInput type="text" required [(ngModel)]="heroe.first_appearance">
         </mat-form-field>
 
 
         <mat-form-field>
             <mat-label>Personajes</mat-label>
-            <input matInput type="text" required  [(ngModel)]="heroe.characters" >
+            <input matInput type="text" required [(ngModel)]="heroe.characters">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Creador</mat-label>
-            <mat-select required [(ngModel)]="heroe.publisher" >
+            <mat-select required [(ngModel)]="heroe.publisher">
                 <mat-option *ngFor="let publisher of publishers" [value]="publisher.desc">
                     {{publisher.desc}}
                 </mat-option>
@@ -42,15 +41,27 @@
 
         <mat-form-field>
             <mat-label>Url</mat-label>
-            <input matInput type="url" required [(ngModel)]="heroe.alt_img" >
+            <input matInput type="url" required [(ngModel)]="heroe.alt_img">
         </mat-form-field>
 
         <br>
 
-        <button mat-raised-button color="warn" fxFlex="10"  (click)="guardar()" >
-            <mat-icon>save</mat-icon>
-            Guardar
-        </button>
+       
+<!-- le meto el fxLayout para indicarle que tome el formato flex -->
+
+        <div fxLayout >
+            <button mat-raised-button color="primary" (click)="guardar()">
+                <mat-icon>save</mat-icon>
+                {{ heroe.id ? 'Actualizar' : 'Guardar'}}
+            </button>
+
+            <span class="spacer"></span>
+
+            <button mat-raised-button color="warn" *ngIf="heroe.id"  (click)="borrarHeroe()" >
+                <mat-icon> delete </mat-icon>
+                Borrar
+            </button>
+        </div>
 
 
     </div>
