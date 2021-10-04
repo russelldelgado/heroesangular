@@ -20,7 +20,7 @@ export class HeroeTarjetaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(`nos hemos traido los heroes , ${this.heroe}}`)
+   // console.log(`nos hemos traido los heroes , ${this.heroe}}`)
 
   }
 
